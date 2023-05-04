@@ -5,22 +5,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import org.d3if3008.kostanku.databinding.ActivityLoginBinding
+import org.d3if3008.kostanku.databinding.ActivityRegisterBinding
 
-class Login : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
+class Register : AppCompatActivity() {
+    private lateinit var binding: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnLogin.setOnClickListener{
+        binding.btnRegist.setOnClickListener{
             val username = binding.edtUsername.text.toString()
             val password = binding.edtPassword.text.toString()
+            val email = binding.edtEmail.text.toString()
 
-            if (username.isEmpty() || password.isEmpty()){
+            if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
                 Toast.makeText(this,"Silahkan Input terlebih dahulu!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this,"Login Berhasil!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Daftar Berhasil!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, CariKost::class.java)
                 startActivity(intent)
                 binding.edtUsername.setText("")
@@ -28,14 +30,13 @@ class Login : AppCompatActivity() {
             }
         }
 
-        binding.loginPage.setOnClickListener {
-            Toast.makeText(this,"Silahkan Login Di Bawah!", Toast.LENGTH_SHORT).show()
+        binding.daftarPage.setOnClickListener {
+            Toast.makeText(this,"Silahkan Register Di Bawah!", Toast.LENGTH_SHORT).show()
         }
 
-        binding.daftarPage.setOnClickListener {
-            val intent = Intent(this, Register::class.java)
+        binding.loginPage.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
-
     }
 }
