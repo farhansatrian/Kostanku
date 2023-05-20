@@ -12,21 +12,10 @@
         android:theme="@style/Theme.Kostanku"
         tools:targetApi="31">
         <activity
-            android:name=".Harga"
-            android:exported="false"
-            android:label="@string/title_activity_harga"
-            android:theme="@style/Theme.Kostanku.NoActionBar" />
-        <activity
-            android:name=".Kriteria"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".CariKost"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

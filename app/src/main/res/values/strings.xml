@@ -9,4 +9,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="judul">Temukan kost idamanmu bersama kami</string>
+    <string name="deskripsi">Kost mahasiswa dengan fasilitas terbaik, temukan kami di Palem 2 Residence</string>
+    <string name="button">Mulai Cari</string>
+    <string name="about_us">About us</string>
+    <string name="about">Kami adalah aplikasi kos kosan yang fokus pada kenyamanan dan kemudahan pencarian kos di Palem Residence. Temukan kos impianmu dengan mudah di sini.</string>
+    <string name="judulAbout">About us</string>
 </resources>
