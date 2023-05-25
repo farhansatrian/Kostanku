@@ -12,10 +12,17 @@
         <action
             android:id="@+id/action_mainFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_kriteriaFragment"
+            app:destination="@id/kriteriaFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="org.d3if3008.kostanku.ui.about.AboutFragment"
         android:label="About Us"
         tools:layout="@layout/fragment_about"/>
+    <fragment
+        android:id="@+id/kriteriaFragment"
+        android:name="org.d3if3008.kostanku.ui.kriteria.KriteriaFragment"
+        android:label="KriteriaFragment" />
 </navigation>

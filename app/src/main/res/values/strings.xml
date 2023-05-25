@@ -15,4 +15,6 @@
     <string name="about_us">About us</string>
     <string name="about">Kami adalah aplikasi kos kosan yang fokus pada kenyamanan dan kemudahan pencarian kos di Palem Residence. Temukan kos impianmu dengan mudah di sini.</string>
     <string name="judulAbout">About us</string>
+    <string name="ukuran_kamar">Ukuran Kamar</string>
+    <string name="invalid">Silahkan pilih salah satu</string>
 </resources>
