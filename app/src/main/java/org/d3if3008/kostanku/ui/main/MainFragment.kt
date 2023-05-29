@@ -1,7 +1,5 @@
 package org.d3if3008.kostanku.ui.main
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -36,6 +34,12 @@ class MainFragment : Fragment() {
         binding.recyclerView.apply {
             adapter = imageAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        binding.cari.setOnClickListener{
+            findNavController().navigate(
+                R.id.action_mainFragment_to_kriteriaFragment
+            )
         }
     }
 

@@ -1,4 +1,4 @@
-package org.d3if3008.kostanku.result
+package org.d3if3008.kostanku.ui.result
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,10 +33,10 @@ class ResultFragment: Fragment() {
         var fasilitas = ""
         var harga = 0
 
-        binding.ukuranKamar.text = ukuran
-        binding.fasilitas.text = personalityType
-        binding.harga.text = personalityExpl
-
-        viewModel.setPersonalityExpl(personalityExpl)
+//        binding.ukuranKamar.text = ukuran
+//        binding.fasilitas.text = personalityType
+//        binding.harga.text = personalityExpl
+//
+//        viewModel.setPersonalityExpl(personalityExpl)
     }
 }
