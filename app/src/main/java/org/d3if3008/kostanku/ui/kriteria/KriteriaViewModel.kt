@@ -1,35 +1,49 @@
 package org.d3if3008.kostanku.ui.kriteria
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.navArgs
+import org.d3if3008.kostanku.R
+import org.d3if3008.kostanku.model.KamarOptions
 import org.d3if3008.kostanku.model.KategoriKost
 
-class KriteriaViewModel: ViewModel() {
+class KriteriaViewModel : ViewModel() {
+    private var typeCounterKamar = MutableLiveData(0)
+    private var typeCounterFasilitas = MutableLiveData(0)
+    private var indexAt = MutableLiveData(0)
 
-    private var typeCounter = MutableLiveData(0)
+    private val harga = listOf(
+        KamarOptions(800000, 1000000, 1300000, R.drawable.kecil, R.drawable.sedang, R.drawable.besar),
+        KamarOptions(0, 50000, 200000, R.drawable.kosongan, R.drawable.kipas, R.drawable.ac)
+    )
 
+//    Mengambil index
+    fun getIndex(): MutableLiveData<Int> = indexAt
 
-    fun increasePoint(point: Int) {
-        typeCounter.value = typeCounter.value?.plus(point)
+//    Mengambil pilihan tiap options
+    fun getOptions() : KamarOptions {
+        return harga[indexAt.value?.toInt()!!]
     }
 
-    fun getResult(): KategoriKost {
-        val type = typeCounter.value!!.toInt()
+//    Nambah index
+    fun increaseIndex() {
+        indexAt.value = if (indexAt.value == harga.size) indexAt.value else indexAt.value?.plus(1)
+    }
 
-        return if (type == 11 ) {
-            KategoriKost.TYPE_A
-        } else if (type == 12) {
-            KategoriKost.TYPE_B
-        } else if (type == 13) {
-            KategoriKost.TYPE_C
-        } else if (type == 101) {
-            KategoriKost.TYPE_D
-        } else if (type == 102) {
-            KategoriKost.TYPE_E
-        } else {
-            KategoriKost.TYPE_F
-        }
+//    Mencari panjang list
+    fun getLengthQuestion(): Int = harga.size
+
+//    Nambah Harga
+    fun increaseHargaKamar(point: Int) {
+        typeCounterKamar.value = typeCounterKamar.value?.plus(point)
+    }
+
+//    Menjumlahkan hasil
+    fun getResult(): Int {
+        val kamar = typeCounterKamar.value!!.toInt()
+        val fasilitas = typeCounterFasilitas.value!!.toInt()
+        val total = kamar + fasilitas
+        return total
     }
 
 }

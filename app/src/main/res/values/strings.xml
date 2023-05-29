@@ -7,8 +7,6 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="judulResult">Perkiraan Harga</string>
-    <string name="ukuran_kamar">Ukuran Kamar</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="judul">Temukan kost idamanmu bersama kami</string>
@@ -20,4 +18,5 @@
     <string name="copyright">Copyright © 2023 Kostanku</string>
     <string name="nohp">+62 82113806383</string>
     <string name="alamatkost">Jl. Sukapura \nKomplek Palem 2 Residence A1 no.1</string>
+    <string name="ukuran_kamar">Cari ukuran kamar yang cocok berdasarkan keinginanmu.</string>
 </resources>

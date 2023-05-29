@@ -1,12 +1,11 @@
 package org.d3if3008.kostanku.ui.kriteria
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import org.d3if3008.kostanku.R
@@ -18,6 +17,8 @@ class KriteriaFragment : Fragment() {
     private val viewModel: KriteriaViewModel by lazy {
         ViewModelProvider(requireActivity())[KriteriaViewModel::class.java]
     }
+
+    private var questionMaxNumber: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,60 +34,61 @@ class KriteriaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.button.setOnClickListener {
             if (binding.radioGroup.checkedRadioButtonId == -1) {
-                Toast.makeText(context, "Silah pilih terlebih dahulu", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Silahkan pilih terlebih dahulu", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+
             recordAnswer()
-            updateQuestion()
-            binding.button.text = "Lihat Harga"
-            if (binding.button.text == "Lihat Harga") {
-                recordAnswer()
-                showResult()
-                backQuestion()
-            }
+            nextQuestion()
         }
 
+        viewModel.getIndex().observe(viewLifecycleOwner) {
+            if (it == questionMaxNumber - 1) binding.button.text = "Lihat Harga"
+            if (it == questionMaxNumber) showResult()
+            if (it < questionMaxNumber) updateQuestion()
+        }
+
+        questionMaxNumber = viewModel.getLengthQuestion()
+        updateQuestion()
     }
 
+//    Menambahkan index
+    fun nextQuestion() {
+        viewModel.increaseIndex()
+    }
+
+//    Record Jawaban
     private fun recordAnswer() {
         when (binding.radioGroup.checkedRadioButtonId) {
             R.id.kecil -> {
-                viewModel.increasePoint(1)
-                if (binding.button.text == "Lihat Harga"){
-                    viewModel.increasePoint(10)
-                }
+                viewModel.increaseHargaKamar(binding.kecil.text.toString().toInt())
+                Log.d("Kriteria", viewModel.getResult().toString())
             }
-
             R.id.sedang -> {
-                viewModel.increasePoint(2)
-                if (binding.button.text == "Lihat Harga"){
-                    viewModel.increasePoint(100)
-                }
+                viewModel.increaseHargaKamar(binding.sedang.text.toString().toInt())
+                Log.d("Kriteria", viewModel.getResult().toString())
             }
-
             R.id.besar -> {
-                viewModel.increasePoint(3)
+                viewModel.increaseHargaKamar(binding.besar.text.toString().toInt())
+                Log.d("Kriteria", viewModel.getResult().toString())
             }
         }
     }
 
+//    Update pertanyaan
     private fun updateQuestion() {
         binding.radioGroup.clearCheck()
 
-        binding.imageKecil.setImageResource(R.drawable.ac)
-        binding.imageSedang.setImageResource(R.drawable.kipas)
-        binding.imageBesar.isInvisible
-        binding.besar.isInvisible
+        val options = viewModel.getOptions()
+        binding.kecil.text = options.harga1.toString()
+        binding.imageKecil.setImageResource(options.gambar1)
+        binding.sedang.text = options.harga2.toString()
+        binding.imageSedang.setImageResource(options.gambar2)
+        binding.besar.text = options.harga3.toString()
+        binding.imageBesar.setImageResource(options.gambar3)
     }
 
-    private fun backQuestion(){
-        binding.radioGroup.clearCheck()
-        binding.imageKecil.setImageResource(R.drawable.kecil)
-        binding.imageSedang.setImageResource(R.drawable.sedang)
-        binding.imageBesar.isVisible
-        binding.besar.isVisible
-    }
-
+//    Menampilkan jawaban
     private fun showResult() {
         viewModel.getResult()
     }

@@ -7,8 +7,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="org.d3if3008.kostanku.ui.main.MainFragment"
-        tools:layout="@layout/fragment_main"
-        android:label="Home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
@@ -20,9 +20,23 @@
         android:id="@+id/aboutFragment"
         android:name="org.d3if3008.kostanku.ui.about.AboutFragment"
         android:label="About Us"
-        tools:layout="@layout/fragment_about"/>
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/kriteriaFragment"
         android:name="org.d3if3008.kostanku.ui.kriteria.KriteriaFragment"
-        android:label="KriteriaFragment" />
+        android:label="Tipe Kamar"
+        tools:layout="@layout/fragment_kriteria">
+        <action
+            android:id="@+id/action_kriteriaFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="org.d3if3008.kostanku.ui.result.ResultFragment"
+        android:label="Hasil"
+        tools:layout="@layout/fragment_result">
+<!--        <argument-->
+<!--            android:name="kriteriaType"-->
+<!--            app:argType="org.d3if3008.model.KategoriKost"/>-->
+    </fragment>
 </navigation>
