@@ -1,5 +1,7 @@
 package org.d3if3008.kostanku.ui.about
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,5 +21,10 @@ class AboutFragment : Fragment() {
         binding = FragmentAboutBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
+
     }
+
+
+
+
 }
