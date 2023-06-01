@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#171616">
+    android:background="#D8D8D8">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardBackgroundColor="#DDDBDB"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
             app:cardElevation="4dp"
             app:layout_constraintBottom_toTopOf="@+id/materialCardView2"
@@ -38,7 +38,7 @@
                     android:layout_margin="5dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="Ukuran Kamar = "
-                    android:textColor="@color/orange_700"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="2dp"
                     android:layout_margin="2dp"
+                    android:layout_marginTop="8dp"
                     android:background="@color/black"
                     android:visibility="visible"
                     app:layout_constraintHorizontal_weight="5"
@@ -74,7 +75,7 @@
                     android:layout_height="match_parent"
 
                     android:text="Fasilitas Kamar = "
-                    android:textColor="@color/orange_700"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp. 2.500.000"
-                    android:textColor="@color/orange_700"
+                    android:textColor="@color/orange_500"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/judulHarga"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -122,6 +123,29 @@
                     app:layout_constraintStart_toEndOf="@+id/judulHarga"
                     app:layout_constraintTop_toTopOf="@+id/judulHarga" />
 
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Info lebih lanjut "
+                    android:textColor="@color/orange_500"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/judulHarga" />
+
+                <ImageView
+                    android:id="@+id/whatsappIcon"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    app:srcCompat="@drawable/whatsapp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -143,30 +167,31 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+
         <TextView
             android:id="@+id/judulHasil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Perkiraan Harga"
-            android:textColor="@color/orange_700"
-            android:textSize="24sp"
+            android:textColor="@color/orange_500"
+            android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-<!--        <ImageView-->
-<!--            android:id="@+id/gambarResult"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginTop="24dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/judulHasil"-->
-<!--            app:srcCompat="@drawable/ukuran2" />-->
+        <ImageView
+            android:id="@+id/gambarResult"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/judulHasil"
+            app:srcCompat="@drawable/ukuran2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
