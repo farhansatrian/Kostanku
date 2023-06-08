@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import org.d3if3008.kostanku.R
 import org.d3if3008.kostanku.databinding.FragmentKriteriaBinding
+import org.d3if3008.kostanku.model.KategoriKost
 
 class KriteriaFragment : Fragment() {
     private lateinit var binding: FragmentKriteriaBinding
@@ -38,12 +41,17 @@ class KriteriaFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            recordAnswer()
-            nextQuestion()
+            if (binding.button.text == "LIHAT HARGA") {
+                recordAnswer()
+                showResult()
+            } else {
+                recordAnswer()
+                nextQuestion()
+            }
         }
 
         viewModel.getIndex().observe(viewLifecycleOwner) {
-            if (it == questionMaxNumber - 1) binding.button.text = "Lihat Harga"
+            if (it == questionMaxNumber - 1) binding.button.text = "LIHAT HARGA"
             if (it == questionMaxNumber) showResult()
             if (it < questionMaxNumber) updateQuestion()
         }
@@ -52,12 +60,10 @@ class KriteriaFragment : Fragment() {
         updateQuestion()
     }
 
-//    Menambahkan index
-    fun nextQuestion() {
+    private fun nextQuestion() {
         viewModel.increaseIndex()
     }
 
-//    Record Jawaban
     private fun recordAnswer() {
         when (binding.radioGroup.checkedRadioButtonId) {
             R.id.kecil -> {
@@ -75,7 +81,6 @@ class KriteriaFragment : Fragment() {
         }
     }
 
-//    Update pertanyaan
     private fun updateQuestion() {
         binding.radioGroup.clearCheck()
 
@@ -88,8 +93,18 @@ class KriteriaFragment : Fragment() {
         binding.imageBesar.setImageResource(options.gambar3)
     }
 
-//    Menampilkan jawaban
+
+
     private fun showResult() {
-        viewModel.getResult()
+        val kategoriKost = viewModel.getKategori()
+
+        // Lakukan tindakan yang sesuai dengan hasil, misalnya navigasi ke ResultFragment
+        val action = KriteriaFragmentDirections.actionKriteriaFragmentToResultFragment(kategoriKost)
+        findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.resetData()
     }
 }

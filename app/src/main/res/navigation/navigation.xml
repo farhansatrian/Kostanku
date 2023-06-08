@@ -29,14 +29,23 @@
         <action
             android:id="@+id/action_kriteriaFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
+        <argument
+            android:name="ukuran"
+            app:argType="string" />
+        <argument
+            android:name="fasilitas"
+            app:argType="string" />
+        <argument
+            android:name="harga"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="org.d3if3008.kostanku.ui.result.ResultFragment"
+        android:name="org.d3if3008.kostanku.result.ResultFragment"
         android:label="Hasil"
         tools:layout="@layout/fragment_result">
-<!--        <argument-->
-<!--            android:name="kriteriaType"-->
-<!--            app:argType="org.d3if3008.model.KategoriKost"/>-->
+        <argument
+            android:name="kategoriKost"
+            app:argType="org.d3if3008.kostanku.model.KategoriKost" />
     </fragment>
 </navigation>

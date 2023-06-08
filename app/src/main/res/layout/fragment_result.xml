@@ -145,7 +145,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView"
-                    app:srcCompat="@drawable/whatsapp" />
+                    app:srcCompat="@drawable/wa" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -190,8 +190,7 @@
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/judulHasil"
-            app:srcCompat="@drawable/ukuran2" />
+            app:layout_constraintTop_toBottomOf="@id/judulHasil"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
